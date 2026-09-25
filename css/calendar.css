@@ -1,0 +1,310 @@
+/* Viewport / Kamera Area */
+
+#scene-calendar .viewport{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    box-sizing:border-box;
+    min-width:0;
+    min-height:0;
+    padding:
+        max(12px,env(safe-area-inset-top,0px))
+        max(12px,env(safe-area-inset-right,0px))
+        max(12px,env(safe-area-inset-bottom,0px))
+        max(12px,env(safe-area-inset-left,0px));
+}
+
+/* Pembungkus skala "fit" (dihitung di calendar.js) + animasi FLIP dari kalender di atas meja */
+#scene-calendar .calendar-fit{
+    width: 320px;
+    height: 430px;
+    flex:0 0 auto;
+    transform-origin: center center;
+    transform-style:preserve-3d;
+    backface-visibility:hidden;
+    will-change:transform;
+}
+
+.cal-skin .camera-rig{
+    position: relative;
+    width: 320px;
+    height: 430px;
+    flex:0 0 auto;
+    transform-origin: center center;
+    transition: none;
+    transform-style:preserve-3d;
+    backface-visibility:hidden;
+    will-change:transform;
+}
+
+/* Desain Kalender Meja Spider-Punk */
+
+.cal-skin .calendar-stand{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #ece4d2;
+    border: 4.5px solid #10151c;
+    border-radius: 3px;
+    box-shadow: 7px 9px 0px #10151c, 0 14px 28px rgba(0,0,0,.2);
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+}
+
+/* Wrapper Halaman Kalender */
+
+.cal-skin .pages-wrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow: visible;
+}
+
+.cal-skin .page{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:#ece4d2;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Header Tema Spider-Punk (Merah-Kuning Komik Halftone) */
+
+.cal-skin .header-punk{
+    background: var(--brick);
+    border-bottom: 4px solid #10151c;
+    padding: 14px 10px 10px 10px;
+    text-align: center;
+    position: relative;
+}
+
+.cal-skin .header-badge{
+    background: var(--ochre);
+    display: inline-block;
+    padding: 2px 16px;
+    border: 3px solid #000;
+    box-shadow: 3px 3px 0px #000;
+    transform: rotate(-2deg);
+}
+
+.cal-skin .month-name{
+    font-family: 'Bangers', cursive, 'Impact', sans-serif;
+    font-size: 32px;
+    color: #10151c;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0px #ffffff;
+}
+
+/* Tabel Grid Kalender */
+
+.cal-skin .calendar-table{
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.cal-skin .calendar-table th,
+.cal-skin .calendar-table td{
+    border: 2.5px solid #10151c;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 900;
+    font-size: 16px;
+    color: #10151c;
+    position: relative;
+}
+
+.cal-skin .calendar-table th{
+    background-color: var(--web-blue);
+    color: #ffffff;
+    font-family: 'Bangers', cursive, sans-serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+    height: 32px;
+    text-transform: uppercase;
+    text-shadow: 1.5px 1.5px 0px #000;
+}
+
+.cal-skin .calendar-table td.empty{
+    background-color: #ded4c2;
+}
+
+/* Lingkaran Merah Sketsa Multi-Loop (Spider-Punk Style) */
+
+.cal-skin .circle-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.cal-skin .circle-container svg{
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.cal-skin .red-sketch-path{
+    stroke: var(--brick);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    stroke-dasharray: 600;
+    stroke-dashoffset: 600;
+    filter:none;
+}
+
+/* Animasi Garis Angin Bergerak Dinamis */
+
+.cal-skin .wind-overlay{
+    position: absolute;
+    top: -50px;
+    left: -300px;
+    width: 900px;
+    height: 600px;
+    pointer-events: none;
+    z-index: 90;
+    opacity: 0;
+    transition: opacity var(--calendar-cue-fade-duration) ease;
+}
+
+.cal-skin .wind-line{
+    position: absolute;
+    background: var(--ink);
+    height: 6px;
+    border-radius: 10px;
+    opacity: 0.85;
+    box-shadow: 0 0 0 3px var(--paper);
+    animation: windSweep 1.2s infinite linear;
+}
+
+@keyframes windSweep{
+    0% {
+        transform: translateX(-150px) scaleX(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.9;
+        transform: translateX(200px) scaleX(1.3);
+    }
+    100% {
+        transform: translateX(600px) scaleX(0.7);
+        opacity: 0;
+    }
+}
+
+/* Efek Teks Komik "WOSHHH!" Bergaya Spider-Punk/POW! */
+
+.cal-skin .woosh-text{
+    position: absolute;
+    top: 35%;
+    left: -150px;
+    font-family: 'Bangers', cursive, sans-serif;
+    font-size: 62px;
+    color: var(--ochre);
+    text-shadow: 5px 5px 0px var(--brick), -3px -3px 0px var(--ink), 3px -3px 0px var(--ink), -3px 3px 0px var(--ink), 3px 3px 0px var(--ink);
+    z-index: 120;
+    pointer-events: none;
+    opacity: 0;
+    letter-spacing: 3px;
+}
+
+.cal-skin .woosh-text.animating{
+    animation:
+        wooshFly var(--calendar-woosh-duration) cubic-bezier(0.1, 0.7, 0.1, 1)
+        forwards;
+}
+
+@keyframes wooshFly{
+    0% {
+        opacity: 0;
+        transform: translateX(-100px) rotate(-15deg) scale(0.6);
+    }
+    20% {
+        opacity: 1;
+        transform: translateX(120px) rotate(-8deg) scale(1.2);
+    }
+    70% {
+        opacity: 1;
+        transform: translateX(350px) rotate(5deg) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(700px) rotate(15deg) scale(0.8);
+    }
+}
+
+
+/* =========================================================
+   STABLE BORE-UP — physical paper detail, compositor-safe
+   These effects never change scene geometry or room scaling.
+========================================================= */
+.cal-skin .calendar-stand{
+    background:#ece4d2;
+    box-shadow:7px 9px 0 var(--ink), 0 12px 24px rgba(0,0,0,.16);
+}
+.cal-skin .calendar-stand::before{
+    content:"";
+    position:absolute;
+    inset:4px;
+    border:1px solid rgba(20,16,12,.10);
+    border-radius:8px;
+    pointer-events:none;
+    z-index:140;
+}
+.cal-skin .page::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    opacity:.16;
+    background:
+      repeating-linear-gradient(0deg,rgba(50,40,30,.035) 0 1px,transparent 1px 4px),
+      linear-gradient(90deg,rgba(255,255,255,.16),transparent 18%,transparent 82%,rgba(0,0,0,.035));
+    mix-blend-mode:multiply;
+}
+.cal-skin .header-badge{
+    transform:rotate(-2deg) translateY(-1px);
+}
+.cal-skin .calendar-table td:nth-child(odd){
+    background-image:linear-gradient(90deg,rgba(255,255,255,.10),transparent);
+}
+.cal-skin .calendar-table td:nth-child(3n){
+    text-shadow:1px 1px 0 rgba(255,255,255,.55);
+}
+.cal-skin .red-sketch-path{
+    stroke-width:4.5;
+}
+@media (prefers-reduced-motion:reduce){
+    .cal-skin .wind-line,
+    .cal-skin .woosh-text.animating{animation:none}
+    .cal-skin .wind-overlay{transition:none}
+}
+
+
+
+/* subtle purple personal accent — calendar identity remains Spider-Man */
+.cal-skin .header-badge{
+    box-shadow:3px 3px 0 #000,5px 5px 0 rgba(155,139,170,.12);
+}
+.cal-skin .month-name{
+    text-shadow:2px 2px 0 #fff,4px 3px 0 rgba(155,139,170,.16);
+}

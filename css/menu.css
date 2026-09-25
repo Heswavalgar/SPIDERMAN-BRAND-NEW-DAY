@@ -1,0 +1,484 @@
+/* =========================================================
+   MENU — BRAND NEW DAY
+   Clean editorial/newsprint cover.
+   The story-frame styles are kept here because the opening
+   cutscene belongs to the menu scene.
+========================================================= */
+
+#scene-menu .poster{
+    position:relative;
+    width:min(
+        560px,
+        calc(100vw - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px))
+    );
+    height:100%;
+    min-height:0;
+    max-height:100%;
+    margin:auto;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 78% 70%, rgba(35,75,115,.08), transparent 30%),
+        linear-gradient(180deg,#eee7d8 0%,#e8e0cf 55%,#e3d9c5 100%);
+    color:var(--ink);
+}
+
+#scene-menu .poster::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:50;
+    pointer-events:none;
+    opacity:.11;
+    background:
+        repeating-linear-gradient(0deg,rgba(30,24,20,.22) 0,rgba(30,24,20,.22) 1px,transparent 1px,transparent 6px),
+        repeating-linear-gradient(90deg,rgba(30,24,20,.025) 0,rgba(30,24,20,.025) 1px,transparent 1px,transparent 11px);
+    mix-blend-mode:multiply;
+}
+
+/* Fine paper grain — gives the flat editorial layout a printed,
+   slightly worn feel closer to the aged poster reference. */
+#scene-menu .poster::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:51;
+    pointer-events:none;
+    opacity:.05;
+    mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-size:120px 120px;
+}
+
+/* Top editorial label */
+#scene-menu .top{
+    position:absolute;
+    inset:0 0 auto;
+    height:65px;
+    padding:20px 22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    z-index:20;
+    font-family:"Space Mono","DM Mono",monospace;
+    font-size:8px;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+}
+
+#scene-menu .top-left{
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+#scene-menu .top-mark{
+    width:7px;
+    height:7px;
+    flex:none;
+    background:var(--brick);
+}
+
+#scene-menu .top-right{color:#687077}
+
+/* Faint issue number — decorative only */
+#scene-menu .issue{
+    position:absolute;
+    left:-8px;
+    top:74px;
+    z-index:1;
+    font-family:Anton,Impact,sans-serif;
+    font-size:clamp(150px,43vw,235px);
+    line-height:.72;
+    color:transparent;
+    -webkit-text-stroke:1px rgba(35,75,115,.12);
+    transform:rotate(-3deg);
+    pointer-events:none;
+}
+
+/* Quiet web detail, matching the reference cover */
+#scene-menu .web{
+    position:absolute;
+    width:365px;
+    height:365px;
+    right:-155px;
+    top:155px;
+    z-index:2;
+    opacity:.18;
+    transform:rotate(15deg);
+    pointer-events:none;
+}
+
+#scene-menu .web svg{width:100%;height:100%}
+#scene-menu .web svg g{stroke:var(--lavender)}
+
+/* The old Spider-Man cover illustration is intentionally hidden.
+   The reference menu is editorial and typography-led. */
+#scene-menu .menu-spider,
+#scene-menu .menu-caption{display:none!important}
+
+#scene-menu .title{
+    position:absolute;
+    left:22px;
+    top:145px;
+    z-index:10;
+}
+
+#scene-menu .title-meta{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    margin-bottom:12px;
+    color:var(--brick);
+    font-family:"DM Mono",monospace;
+    font-size:8px;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+}
+
+#scene-menu .title-meta::before{
+    content:"";
+    width:43px;
+    height:1px;
+    background:var(--brick);
+}
+
+#scene-menu .title h1{
+    font-family:Bangers,Anton,Impact,sans-serif;
+    font-weight:400;
+    font-size:clamp(68px,18vw,104px);
+    line-height:.76;
+    letter-spacing:.005em;
+    text-transform:uppercase;
+    text-shadow:2px 2px 0 rgba(35,75,115,.10);
+}
+
+#scene-menu .title h1 small{
+    display:block;
+    margin-bottom:10px;
+    color:var(--ink);
+    font-family:"DM Mono",monospace;
+    font-size:clamp(17px,5vw,24px);
+    font-weight:500;
+    line-height:1;
+    letter-spacing:.08em;
+}
+
+#scene-menu .title .new,
+#scene-menu .title .day{
+    display:block;
+    color:var(--brick);
+    text-shadow:2px 2px 0 var(--paper);
+}
+
+#scene-menu .title .new{margin-left:28px}
+#scene-menu .title .day{margin-left:74px}
+
+#scene-menu .side-text{
+    position:absolute;
+    right:15px;
+    top:226px;
+    z-index:10;
+    writing-mode:vertical-rl;
+    font-family:"Space Mono","DM Mono",monospace;
+    font-size:7px;
+    letter-spacing:.15em;
+    color:#687984;
+    text-transform:uppercase;
+}
+
+#scene-menu .location{
+    position:absolute;
+    left:22px;
+    top:405px;
+    z-index:10;
+}
+
+#scene-menu .location-label{
+    margin-bottom:4px;
+    font-family:"DM Mono",monospace;
+    font-size:8px;
+    letter-spacing:.15em;
+    color:#777067;
+    text-transform:uppercase;
+}
+
+#scene-menu .location-name{
+    font-family:Anton,Impact,sans-serif;
+    font-size:clamp(38px,10vw,54px);
+    line-height:.82;
+    text-transform:uppercase;
+}
+
+#scene-menu .location-name span{color:var(--brick)}
+
+#scene-menu .chapter{
+    position:absolute;
+    right:-2px;
+    top:400px;
+    width:118px;
+    height:84px;
+    z-index:8;
+    background:
+        radial-gradient(rgba(233,225,211,.35) 1px,transparent 1.3px) 0 0/9px 9px,
+        var(--brick);
+    border:1px solid var(--ink);
+    box-shadow:5px 5px 0 var(--ink);
+    transform:rotate(-3deg);
+    overflow:hidden;
+}
+
+/* Small polka-dot accents, echoing the reference poster's red dots */
+#scene-menu .dot{
+    position:absolute;
+    z-index:9;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--brick);
+    pointer-events:none;
+}
+#scene-menu .dot.d1{right:16px;top:388px}
+#scene-menu .dot.d2{right:36px;top:492px;background:var(--purple-soft);opacity:.75}
+
+#scene-menu .chapter::before{
+    content:"CHAPTER";
+    position:absolute;
+    left:11px;
+    top:10px;
+    color:rgba(233,225,211,.7);
+    font-family:"DM Mono",monospace;
+    font-size:7px;
+    letter-spacing:.15em;
+}
+
+#scene-menu .chapter::after{
+    content:"10";
+    position:absolute;
+    right:10px;
+    bottom:3px;
+    color:var(--paper);
+    font-family:Anton,Impact,sans-serif;
+    font-size:46px;
+    line-height:1;
+}
+
+#scene-menu .lower{
+    position:absolute;
+    left:22px;
+    bottom:126px;
+    z-index:15;
+}
+
+#scene-menu .lower::before{
+    content:"";
+    display:block;
+    width:67px;
+    height:2px;
+    margin-bottom:12px;
+    background:var(--brick);
+}
+
+#scene-menu .lower p{
+    font-family:"DM Mono",monospace;
+    font-size:8px;
+    line-height:1.75;
+    letter-spacing:.03em;
+    color:#4f4943;
+    text-transform:uppercase;
+}
+
+#scene-menu .start{
+    position:absolute;
+    right:20px;
+    bottom:126px;
+    z-index:30;
+}
+
+#scene-menu .start button{
+    position:relative;
+    width:auto;
+    min-width:0;
+    height:38px;
+    padding:0 16px;
+    border:2px solid var(--ink);
+    background:var(--paper);
+    color:var(--ink);
+    cursor:pointer;
+    font-family:"DM Mono",monospace;
+    font-size:8px;
+    font-weight:500;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    box-shadow:4px 4px 0 var(--brick);
+    transition:transform .18s ease,background .18s ease,color .18s ease,box-shadow .18s ease;
+}
+
+#scene-menu .start button::after{display:none}
+
+@media (hover:hover) and (pointer:fine){
+    #scene-menu .start button:hover{
+        background:var(--ink);
+        color:var(--paper);
+        transform:translate(-2px,-2px);
+        box-shadow:6px 6px 0 var(--brick);
+    }
+}
+
+#scene-menu .start button:active{
+    transform:translate(0,0);
+    box-shadow:2px 2px 0 var(--brick);
+}
+
+#scene-menu .footer{
+    position:absolute;
+    left:22px;
+    right:22px;
+    bottom:20px;
+    z-index:20;
+    padding-top:11px;
+    border-top:1px solid rgba(23,21,20,.18);
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    font-family:"DM Mono",monospace;
+    font-size:7px;
+    letter-spacing:.13em;
+    color:#777067;
+    text-transform:uppercase;
+}
+
+#scene-menu .footer strong{color:var(--ink);font-weight:500}
+
+#scene-menu .cross{
+    position:absolute;
+    width:13px;
+    height:13px;
+    z-index:15;
+    pointer-events:none;
+}
+
+#scene-menu .cross::before,
+#scene-menu .cross::after{
+    content:"";
+    position:absolute;
+    background:var(--brick);
+}
+
+#scene-menu .cross::before{width:13px;height:1px;top:6px}
+#scene-menu .cross::after{width:1px;height:13px;left:6px}
+#scene-menu .cross.one{left:35px;top:356px}
+#scene-menu .cross.two{right:20px;bottom:165px;transform:scale(.65)}
+
+/* =========================================================
+   OPENING CUTSCENE
+========================================================= */
+#scene-menu .story-frame{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-sizing:border-box;
+    padding:max(24px,env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) max(24px,env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));
+    opacity:0;
+    visibility:hidden;
+    transition:opacity var(--story-fade-duration) cubic-bezier(.22,.61,.36,1),visibility 0s linear var(--story-fade-duration);
+}
+
+#scene-menu .story-frame.show{
+    opacity:1;
+    visibility:visible;
+    transition:opacity var(--story-fade-duration) cubic-bezier(.22,.61,.36,1),visibility 0s linear 0s;
+}
+
+#scene-menu .story-content{width:min(590px,100%);max-width:100%;position:relative}
+
+#scene-menu .story-number{
+    margin-bottom:32px;
+    opacity:0;
+    transform:translateY(8px) rotate(-2deg);
+    transition:opacity .65s cubic-bezier(.22,.61,.36,1) .05s,transform .65s cubic-bezier(.22,.61,.36,1) .05s;
+    color:#f3ede1;
+    font-family:"Caveat","Cormorant Garamond",cursive;
+    font-weight:700;
+    font-size:128px;
+    line-height:.7;
+    text-shadow:0 0 30px rgba(182,44,54,.4),0 0 60px rgba(155,139,170,.16);
+}
+
+#scene-menu .story-line{
+    width:100%;
+    height:1px;
+    background:linear-gradient(90deg,rgba(243,237,225,.55),rgba(155,139,170,.1));
+    box-shadow:6px 0 0 rgba(182,44,54,.8);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .9s cubic-bezier(.22,.61,.36,1);
+}
+
+#scene-menu .story-frame.show .story-number{opacity:1;transform:translateY(0)}
+#scene-menu .story-frame.show .story-line{transform:scaleX(1)}
+
+#scene-menu .story-text{
+    margin-top:36px;
+    color:#f3ede1;
+    font-family:"EB Garamond",Georgia,serif;
+    font-weight:400;
+    font-size:19px;
+    line-height:1.8;
+    letter-spacing:.01em;
+    opacity:0;
+    transform:translateY(10px);
+    transition:opacity .72s cubic-bezier(.22,.61,.36,1) .35s,transform .72s cubic-bezier(.22,.61,.36,1) .35s;
+}
+
+#scene-menu .story-frame.show .story-text{opacity:1;transform:translateY(0)}
+#scene-menu .story-text .muted{color:#9b948a;font-style:italic;font-weight:500}
+#scene-menu .story-text .gap{display:block;height:22px}
+
+#scene-menu .story-footer{
+    position:absolute;
+    right:0;
+    bottom:-40px;
+    color:#6b655c;
+    font-family:"DM Mono",monospace;
+    font-size:8px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+@media(max-width:430px){
+    #scene-menu .poster{width:100%}
+    #scene-menu .top{padding-inline:18px}
+    #scene-menu .title{left:18px;top:116px}
+    #scene-menu .title h1{font-size:clamp(57px,17vw,72px)}
+    #scene-menu .title .new{margin-left:18px}
+    #scene-menu .title .day{margin-left:46px}
+    #scene-menu .web{width:270px;height:270px;right:-110px;top:132px}
+    #scene-menu .location{left:18px;top:350px}
+    #scene-menu .chapter{right:18px;top:350px;width:92px;height:66px}
+    #scene-menu .chapter::after{font-size:37px}
+    #scene-menu .dot.d1{right:32px;top:340px}
+    #scene-menu .dot.d2{right:52px;top:410px}
+    #scene-menu .lower{left:18px;bottom:101px}
+    #scene-menu .start{right:18px;bottom:101px}
+    #scene-menu .start button{width:auto;height:36px;padding:0 14px;font-size:7.5px}
+    #scene-menu .footer{left:18px;right:18px;bottom:14px;font-size:5.5px}
+}
+
+@media(max-height:620px){
+    #scene-menu .title{top:88px}
+    #scene-menu .location{top:286px}
+    #scene-menu .chapter{top:286px}
+    #scene-menu .dot.d1{top:276px}
+    #scene-menu .dot.d2{top:346px}
+    #scene-menu .lower{bottom:82px}
+    #scene-menu .start{bottom:82px}
+    #scene-menu .cross.one{top:260px}
+    #scene-menu .cross.two{bottom:112px}
+}
