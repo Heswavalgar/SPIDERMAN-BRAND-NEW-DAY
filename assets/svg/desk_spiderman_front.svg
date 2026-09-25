@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520">
+<defs>
+</defs>
+<ellipse cx="380" cy="486" rx="315" ry="16" fill="#09070d" opacity=".35"/>
+<!-- top -->
+<path d="M45 75 L715 75 L680 112 L80 112 Z" fill="#202932" stroke="#111018" stroke-width="8"/>
+<path d="M45 75 L715 75" stroke="#d7d0cb" stroke-width="7"/>
+<!-- cabinet body -->
+<path d="M78 112 L682 112 L682 430 L78 430Z" fill="#b9b3ad" stroke="#151219" stroke-width="8"/>
+<!-- left leg/open bay -->
+<rect x="103" y="145" width="245" height="230" fill="#403b3d" stroke="#17141a" stroke-width="7"/>
+<rect x="111" y="153" width="229" height="214" fill="#17141a"/>
+<!-- center drawers -->
+<rect x="350" y="112" width="185" height="82" fill="#d7cebd" stroke="#77706f" stroke-width="4"/>
+<rect x="350" y="194" width="185" height="103" fill="#cec4b3" stroke="#77706f" stroke-width="4"/>
+<rect x="350" y="297" width="185" height="133" fill="#c6baaa" stroke="#77706f" stroke-width="4"/>
+<!-- handles -->
+<rect x="420" y="138" width="58" height="20" rx="7" fill="#29252c"/>
+<rect x="420" y="217" width="58" height="20" rx="7" fill="#29252c"/>
+<rect x="420" y="328" width="58" height="20" rx="7" fill="#29252c"/>
+<!-- subtle comic star pattern -->
+<g fill="#a59da0" opacity=".22">
+ <path d="M575 155 l5 11 12 2-9 8 2 12-10-6-11 6 3-12-9-8 12-2z"/>
+ <path d="M615 205 l5 11 12 2-9 8 2 12-10-6-11 6 3-12-9-8 12-2z"/>
+ <path d="M575 265 l5 11 12 2-9 8 2 12-10-6-11 6 3-12-9-8 12-2z"/>
+ <path d="M615 315 l5 11 12 2-9 8 2 12-10-6-11 6 3-12-9-8 12-2z"/>
+</g>
+<!-- feet -->
+<rect x="90" y="430" width="24" height="28" rx="5" fill="#111018"/>
+<rect x="646" y="430" width="24" height="28" rx="5" fill="#111018"/>
+</svg>

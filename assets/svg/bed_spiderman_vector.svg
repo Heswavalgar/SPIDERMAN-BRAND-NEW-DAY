@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 430">
+<defs>
+  <filter id="shadow"><feGaussianBlur stdDeviation="4"/></filter>
+</defs>
+<ellipse cx="505" cy="401" rx="455" ry="20" fill="#09070d" opacity=".38" filter="url(#shadow)"/>
+<!-- upholstered bed frame -->
+<path d="M55 255 Q55 225 83 218 L825 218 Q858 218 858 250 L858 356 Q858 378 837 378 L88 378 Q55 378 55 345Z" fill="#b9b3ad" stroke="#16121a" stroke-width="8"/>
+<!-- tall headboard -->
+<path d="M825 65 Q825 45 846 40 L932 40 Q954 42 954 65 L954 356 Q954 378 932 378 L825 378Z" fill="#a8aaa6" stroke="#16121a" stroke-width="8"/>
+<!-- mattress -->
+<path d="M88 205 Q88 183 111 178 L817 178 Q838 180 846 201 L846 244 L88 244Z" fill="#e7dfcf" stroke="#16121a" stroke-width="7"/>
+<!-- pillow -->
+<path d="M720 132 Q755 98 823 110 L875 145 Q891 157 873 176 L811 198 Q775 206 739 185 L706 163 Q696 150 720 132Z" fill="#ded5c6" stroke="#16121a" stroke-width="6"/>
+<!-- blanket -->
+<path d="M275 181 Q323 162 390 177 L493 181 L493 244 L275 244Z" fill="#b9b0b2" opacity=".95"/>
+<path d="M290 181 Q340 169 390 178" fill="none" stroke="#8e8589" stroke-width="5"/>
+<!-- blanket fringe -->
+<path d="M287 240 L287 281 M300 241 L300 285 M313 241 L313 282 M326 242 L326 286 M339 242 L339 282" stroke="#5d555b" stroke-width="5"/>
+<!-- feet -->
+<rect x="105" y="374" width="30" height="20" rx="5" fill="#111018"/>
+<rect x="810" y="374" width="30" height="20" rx="5" fill="#111018"/>
+</svg>
