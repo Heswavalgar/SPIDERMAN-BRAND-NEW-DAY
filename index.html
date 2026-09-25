@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#08060d">
+<meta name="color-scheme" content="dark">
+
+<title>Spider-Man: Brand New Day</title>
+
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bangers&family=DM+Mono:wght@400;500&family=Space+Mono:wght@400;700&family=Caveat:wght@600;700&family=EB+Garamond:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/menu.css">
+<link rel="stylesheet" href="css/room.css">
+<link rel="stylesheet" href="css/calendar.css">
+<link rel="stylesheet" href="css/ending.css">
+</head>
+
+<body>
+
+<!-- =====================================================
+     SPRITE SVG BERSAMA
+     Dipakai kamar & layar penutup lewat <use href="#...">
+===================================================== -->
+
+<svg class="svg-sprite" aria-hidden="true">
+    <defs>
+            <symbol id="spy" viewBox="0 0 100 100">
+                <g fill="currentColor" stroke="currentColor" stroke-width="5" stroke-linecap="round" fill-rule="nonzero">
+                    <ellipse cx="50" cy="60" rx="10" ry="19" stroke="none"/>
+                    <circle cx="50" cy="34" r="7" stroke="none"/>
+                    <g fill="none">
+                        <path id="lg" d="M43 42Q22 20 8 26M41 52Q18 42 4 54M41 62Q18 64 6 82M43 74Q30 86 24 98"/>
+                        <use href="#lg" transform="translate(100 0) scale(-1 1)"/>
+                    </g>
+                </g>
+            </symbol>
+        
+        <symbol id="web-corner" viewBox="0 0 100 100">
+            <g fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round"><path d="M0 0L100.0 0.0"/><path d="M0 0L96.6 25.9"/><path d="M0 0L86.6 50.0"/><path d="M0 0L70.7 70.7"/><path d="M0 0L50.0 86.6"/><path d="M0 0L25.9 96.6"/><path d="M0 0L0.0 100.0"/><path d="M20.0 0.0Q17.8 2.3 19.3 5.2"/><path d="M19.3 5.2Q16.6 6.9 17.3 10.0"/><path d="M17.3 10.0Q14.3 11.0 14.1 14.1"/><path d="M14.1 14.1Q11.0 14.3 10.0 17.3"/><path d="M10.0 17.3Q6.9 16.6 5.2 19.3"/><path d="M5.2 19.3Q2.3 17.8 0.0 20.0"/><path d="M38.0 0.0Q33.9 4.5 36.7 9.8"/><path d="M36.7 9.8Q31.6 13.1 32.9 19.0"/><path d="M32.9 19.0Q27.1 20.8 26.9 26.9"/><path d="M26.9 26.9Q20.8 27.1 19.0 32.9"/><path d="M19.0 32.9Q13.1 31.6 9.8 36.7"/><path d="M9.8 36.7Q4.5 33.9 0.0 38.0"/><path d="M56.0 0.0Q50.0 6.6 54.1 14.5"/><path d="M54.1 14.5Q46.6 19.3 48.5 28.0"/><path d="M48.5 28.0Q40.0 30.7 39.6 39.6"/><path d="M39.6 39.6Q30.7 40.0 28.0 48.5"/><path d="M28.0 48.5Q19.3 46.6 14.5 54.1"/><path d="M14.5 54.1Q6.6 50.0 0.0 56.0"/><path d="M74.0 0.0Q66.0 8.7 71.5 19.2"/><path d="M71.5 19.2Q61.5 25.5 64.1 37.0"/><path d="M64.1 37.0Q52.8 40.5 52.3 52.3"/><path d="M52.3 52.3Q40.5 52.8 37.0 64.1"/><path d="M37.0 64.1Q25.5 61.5 19.2 71.5"/><path d="M19.2 71.5Q8.7 66.0 0.0 74.0"/><path d="M92.0 0.0Q82.1 10.8 88.9 23.8"/><path d="M88.9 23.8Q76.5 31.7 79.7 46.0"/><path d="M79.7 46.0Q65.7 50.4 65.1 65.1"/><path d="M65.1 65.1Q50.4 65.7 46.0 79.7"/><path d="M46.0 79.7Q31.7 76.5 23.8 88.9"/><path d="M23.8 88.9Q10.8 82.1 0.0 92.0"/></g>
+        </symbol>
+    </defs>
+</svg>
+
+
+<!-- =====================================================
+     SCENE 2 — KAMAR (cutscene)
+===================================================== -->
+
+<section class="scene" id="scene-room">
+
+<div class="room">
+
+
+
+    <!-- BACKGROUND -->
+    <div class="wall"></div>
+    <svg class="cracks" viewBox="0 0 200 200" preserveAspectRatio="none" aria-hidden="true">
+        <g fill="none" stroke-linejoin="miter" stroke-linecap="round">
+            <g stroke="rgba(255,255,255,.14)" stroke-width=".9" transform="translate(1 .7)"><path d="M96 196 L93 186 L98 176 L94 166 L99 156"/><path d="M98 176 L106 171 L109 162"/><path d="M93 186 L86 182"/><path d="M132 167 L138 172 L135 179"/></g>
+            <g stroke="#2b1d36" stroke-width="1.1" opacity=".65"><path d="M96 196 L93 186 L98 176 L94 166 L99 156"/></g>
+            <g stroke="#2b1d36" stroke-width=".8" opacity=".65"><path d="M98 176 L106 171 L109 162"/><path d="M93 186 L86 182"/><path d="M132 167 L138 172 L135 179"/></g>
+        </g>
+    </svg>
+    <div class="ceiling"></div>
+    <div class="led"></div>
+    <div class="led-glow"></div>
+
+    <div class="spots">
+        <div class="spot"></div>
+        <div class="spot"></div>
+        <div class="spot"></div>
+        <div class="spot"></div>
+    </div>
+
+    <!-- WEB CORNERS + HANGING SPIDER -->
+    <div class="web-corner l"><svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round"><path d="M0 0L100.0 0.0"/><path d="M0 0L96.6 25.9"/><path d="M0 0L86.6 50.0"/><path d="M0 0L70.7 70.7"/><path d="M0 0L50.0 86.6"/><path d="M0 0L25.9 96.6"/><path d="M0 0L0.0 100.0"/><path d="M20.0 0.0Q17.8 2.3 19.3 5.2"/><path d="M19.3 5.2Q16.6 6.9 17.3 10.0"/><path d="M17.3 10.0Q14.3 11.0 14.1 14.1"/><path d="M14.1 14.1Q11.0 14.3 10.0 17.3"/><path d="M10.0 17.3Q6.9 16.6 5.2 19.3"/><path d="M5.2 19.3Q2.3 17.8 0.0 20.0"/><path d="M38.0 0.0Q33.9 4.5 36.7 9.8"/><path d="M36.7 9.8Q31.6 13.1 32.9 19.0"/><path d="M32.9 19.0Q27.1 20.8 26.9 26.9"/><path d="M26.9 26.9Q20.8 27.1 19.0 32.9"/><path d="M19.0 32.9Q13.1 31.6 9.8 36.7"/><path d="M9.8 36.7Q4.5 33.9 0.0 38.0"/><path d="M56.0 0.0Q50.0 6.6 54.1 14.5"/><path d="M54.1 14.5Q46.6 19.3 48.5 28.0"/><path d="M48.5 28.0Q40.0 30.7 39.6 39.6"/><path d="M39.6 39.6Q30.7 40.0 28.0 48.5"/><path d="M28.0 48.5Q19.3 46.6 14.5 54.1"/><path d="M14.5 54.1Q6.6 50.0 0.0 56.0"/><path d="M74.0 0.0Q66.0 8.7 71.5 19.2"/><path d="M71.5 19.2Q61.5 25.5 64.1 37.0"/><path d="M64.1 37.0Q52.8 40.5 52.3 52.3"/><path d="M52.3 52.3Q40.5 52.8 37.0 64.1"/><path d="M37.0 64.1Q25.5 61.5 19.2 71.5"/><path d="M19.2 71.5Q8.7 66.0 0.0 74.0"/><path d="M92.0 0.0Q82.1 10.8 88.9 23.8"/><path d="M88.9 23.8Q76.5 31.7 79.7 46.0"/><path d="M79.7 46.0Q65.7 50.4 65.1 65.1"/><path d="M65.1 65.1Q50.4 65.7 46.0 79.7"/><path d="M46.0 79.7Q31.7 76.5 23.8 88.9"/><path d="M23.8 88.9Q10.8 82.1 0.0 92.0"/></svg></div>
+    <div class="web-corner r"><svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round"><path d="M0 0L100.0 0.0"/><path d="M0 0L96.6 25.9"/><path d="M0 0L86.6 50.0"/><path d="M0 0L70.7 70.7"/><path d="M0 0L50.0 86.6"/><path d="M0 0L25.9 96.6"/><path d="M0 0L0.0 100.0"/><path d="M20.0 0.0Q17.8 2.3 19.3 5.2"/><path d="M19.3 5.2Q16.6 6.9 17.3 10.0"/><path d="M17.3 10.0Q14.3 11.0 14.1 14.1"/><path d="M14.1 14.1Q11.0 14.3 10.0 17.3"/><path d="M10.0 17.3Q6.9 16.6 5.2 19.3"/><path d="M5.2 19.3Q2.3 17.8 0.0 20.0"/><path d="M38.0 0.0Q33.9 4.5 36.7 9.8"/><path d="M36.7 9.8Q31.6 13.1 32.9 19.0"/><path d="M32.9 19.0Q27.1 20.8 26.9 26.9"/><path d="M26.9 26.9Q20.8 27.1 19.0 32.9"/><path d="M19.0 32.9Q13.1 31.6 9.8 36.7"/><path d="M9.8 36.7Q4.5 33.9 0.0 38.0"/><path d="M56.0 0.0Q50.0 6.6 54.1 14.5"/><path d="M54.1 14.5Q46.6 19.3 48.5 28.0"/><path d="M48.5 28.0Q40.0 30.7 39.6 39.6"/><path d="M39.6 39.6Q30.7 40.0 28.0 48.5"/><path d="M28.0 48.5Q19.3 46.6 14.5 54.1"/><path d="M14.5 54.1Q6.6 50.0 0.0 56.0"/><path d="M74.0 0.0Q66.0 8.7 71.5 19.2"/><path d="M71.5 19.2Q61.5 25.5 64.1 37.0"/><path d="M64.1 37.0Q52.8 40.5 52.3 52.3"/><path d="M52.3 52.3Q40.5 52.8 37.0 64.1"/><path d="M37.0 64.1Q25.5 61.5 19.2 71.5"/><path d="M19.2 71.5Q8.7 66.0 0.0 74.0"/><path d="M92.0 0.0Q82.1 10.8 88.9 23.8"/><path d="M88.9 23.8Q76.5 31.7 79.7 46.0"/><path d="M79.7 46.0Q65.7 50.4 65.1 65.1"/><path d="M65.1 65.1Q50.4 65.7 46.0 79.7"/><path d="M46.0 79.7Q31.7 76.5 23.8 88.9"/><path d="M23.8 88.9Q10.8 82.1 0.0 92.0"/></svg></div>
+    <div class="hang-spider">
+        <svg viewBox="0 0 40 130"><path d="M20 0V88" stroke="#fff" stroke-width="1.2" opacity=".8"/><g style="color:#100c14"><use href="#spy" x="0" y="82" width="40" height="40"/></g><path d="M20 96l0 8" stroke="#d3202e" stroke-width="4" stroke-linecap="round"/></svg>
+    </div>
+
+    <!-- COMIC WORDS -->
+    <div class="comic thwip">THWIP!</div>
+    <div class="comic swing">SWING!</div>
+    <div class="comic pow">POW!</div>
+
+    <!-- WALL DECOR -->
+    <div class="left-wall">
+        <div class="star-panel">
+            <svg class="face" viewBox="0 0 100 100" aria-label="Spider-Man">
+                <defs><clipPath id="faceclip"><path d="M50 5Q81 5 83 40Q83 70 67 87Q58 95 50 95Q42 95 33 87Q17 70 17 40Q19 5 50 5Z"/></clipPath></defs>
+                <circle cx="50" cy="50" r="46" fill="#1d3f96" stroke="#100c14" stroke-width="3"/>
+                <g transform="translate(10 11) scale(.8)">
+                    <path d="M50 5Q81 5 83 40Q83 70 67 87Q58 95 50 95Q42 95 33 87Q17 70 17 40Q19 5 50 5Z" fill="#e3283a" stroke="#100c14" stroke-width="4" stroke-linejoin="round"/>
+                    <g clip-path="url(#faceclip)" fill="none" stroke="#100c14" stroke-width="1.8" opacity=".85">
+                        <path d="M50 4V96M50 44L14 22M50 44L86 22M50 60L18 84M50 60L82 84M18 34Q50 46 82 34M16 58Q50 72 84 58M28 78Q50 88 72 78"/>
+                    </g>
+                    <path d="M20 46Q38 30 49 56Q34 66 20 46Z" fill="#fff" stroke="#100c14" stroke-width="4" stroke-linejoin="round"/>
+                    <path d="M80 46Q62 30 51 56Q66 66 80 46Z" fill="#fff" stroke="#100c14" stroke-width="4" stroke-linejoin="round"/>
+                </g>
+            </svg>
+        </div>
+
+        <div class="date-panel">
+            <b class="dp-tag">DO YOU KNOW</b>
+            <span>WHAT THE DATE<br>IS TODAY?</span>
+            <svg class="dp-spy" aria-hidden="true"><use href="#spy"/></svg>
+        </div>
+    </div>
+
+    <!-- POSTERS -->
+    <div class="posters">
+
+        <div class="poster">
+            <img
+                src="assets/img/poster1.jpg"
+                alt="Spider-Man comic"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+            >
+            <div class="poster-fallback">SPIDER-MAN<br>COMIC</div>
+        </div>
+
+        <div class="poster">
+            <img
+                src="assets/img/poster2.jpg"
+                alt="Venom comic"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+            >
+            <div class="poster-fallback">VENOM<br>COMIC</div>
+        </div>
+
+        <div class="poster">
+            <img
+                src="assets/img/poster3.jpg"
+                alt="Spider-Man No Way Home comic"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+            >
+            <div class="poster-fallback">SPIDER-MAN<br>NO WAY HOME</div>
+        </div>
+
+        <div class="poster quote">
+            <span>
+                NOTHING<br>
+                PERFECT<br>
+                IN THIS<br>
+                WORLD
+            </span>
+            <svg class="pq-web" viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M0 0L100.0 0.0"/><path d="M0 0L92.7 37.5"/><path d="M0 0L70.7 70.7"/><path d="M0 0L37.5 92.7"/><path d="M0 0L0.0 100.0"/><path d="M30.0 0.0Q25.9 5.0 27.8 11.2"/><path d="M27.8 11.2Q22.0 14.6 21.2 21.2"/><path d="M21.2 21.2Q14.6 22.0 11.2 27.8"/><path d="M11.2 27.8Q5.0 25.9 0.0 30.0"/><path d="M55.0 0.0Q47.5 9.2 51.0 20.6"/><path d="M51.0 20.6Q40.4 26.7 38.9 38.9"/><path d="M38.9 38.9Q26.7 40.4 20.6 51.0"/><path d="M20.6 51.0Q9.2 47.5 0.0 55.0"/><path d="M80.0 0.0Q69.1 13.4 74.2 30.0"/><path d="M74.2 30.0Q58.7 38.9 56.6 56.6"/><path d="M56.6 56.6Q38.9 58.7 30.0 74.2"/><path d="M30.0 74.2Q13.4 69.1 0.0 80.0"/></svg>
+        </div>
+
+    </div>
+
+    <!-- FLOOR -->
+    <div class="floor">
+        <svg viewBox="0 0 100 50" preserveAspectRatio="none" aria-hidden="true">
+            <g stroke="rgba(6,8,28,.5)" stroke-width="1.4" vector-effect="non-scaling-stroke" fill="none">
+                <line x1="-52.00" y1="0" x2="-120" y2="50" vector-effect="non-scaling-stroke"/><line x1="-40.00" y1="0" x2="-100" y2="50" vector-effect="non-scaling-stroke"/><line x1="-28.00" y1="0" x2="-80" y2="50" vector-effect="non-scaling-stroke"/><line x1="-16.00" y1="0" x2="-60" y2="50" vector-effect="non-scaling-stroke"/><line x1="-4.00" y1="0" x2="-40" y2="50" vector-effect="non-scaling-stroke"/><line x1="8.00" y1="0" x2="-20" y2="50" vector-effect="non-scaling-stroke"/><line x1="20.00" y1="0" x2="0" y2="50" vector-effect="non-scaling-stroke"/><line x1="32.00" y1="0" x2="20" y2="50" vector-effect="non-scaling-stroke"/><line x1="44.00" y1="0" x2="40" y2="50" vector-effect="non-scaling-stroke"/><line x1="56.00" y1="0" x2="60" y2="50" vector-effect="non-scaling-stroke"/><line x1="68.00" y1="0" x2="80" y2="50" vector-effect="non-scaling-stroke"/><line x1="80.00" y1="0" x2="100" y2="50" vector-effect="non-scaling-stroke"/><line x1="92.00" y1="0" x2="120" y2="50" vector-effect="non-scaling-stroke"/><line x1="104.00" y1="0" x2="140" y2="50" vector-effect="non-scaling-stroke"/><line x1="116.00" y1="0" x2="160" y2="50" vector-effect="non-scaling-stroke"/><line x1="128.00" y1="0" x2="180" y2="50" vector-effect="non-scaling-stroke"/><line x1="140.00" y1="0" x2="200" y2="50" vector-effect="non-scaling-stroke"/><line x1="152.00" y1="0" x2="220" y2="50" vector-effect="non-scaling-stroke"/>
+            </g>
+        </svg>
+    </div>
+    <div class="baseboard"></div>
+
+    <div class="wall-shadow ws-desk"></div>
+    <div class="wall-shadow ws-bed"></div>
+
+    <div class="rug"><svg viewBox="0 0 400 150">
+        <ellipse cx="200" cy="80" rx="196" ry="68" fill="#000" opacity=".35"/>
+        <ellipse cx="200" cy="75" rx="196" ry="68" fill="#c41e2c" stroke="#100c14" stroke-width="5"/>
+        <ellipse cx="200" cy="75" rx="185" ry="62" fill="#1d3f96" stroke="#100c14" stroke-width="3"/>
+        <ellipse cx="200" cy="75" rx="150" ry="50" fill="#c41e2c"/>
+        <g fill="none" stroke="#100c14" stroke-width="2" opacity=".75"><path d="M200 75L385.0 75.0"/><path d="M200 75L360.2 106.0"/><path d="M200 75L292.5 128.7"/><path d="M200 75L200.0 137.0"/><path d="M200 75L107.5 128.7"/><path d="M200 75L39.8 106.0"/><path d="M200 75L15.0 75.0"/><path d="M200 75L39.8 44.0"/><path d="M200 75L107.5 21.3"/><path d="M200 75L200.0 13.0"/><path d="M200 75L292.5 21.3"/><path d="M200 75L360.2 44.0"/><ellipse cx="200" cy="75" rx="61.050000000000004" ry="20.46"/><ellipse cx="200" cy="75" rx="107.3" ry="35.96"/><ellipse cx="200" cy="75" rx="151.7" ry="50.839999999999996"/></g>
+        <ellipse cx="200" cy="75" rx="44" ry="21" fill="#100c14"/>
+        <g style="color:#fff"><use href="#spy" x="176" y="54" width="48" height="42"/></g>
+    </svg></div>
+
+    <!-- FURNITURE -->
+    <div class="furniture desk">
+        <img src="assets/svg/desk_spiderman_front.svg" alt="Meja kamar">
+        <svg class="overlay" viewBox="0 0 760 520" aria-hidden="true">
+            <defs>
+                <radialGradient id="deskLampGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#fff6d5" stop-opacity=".55"/>
+                    <stop offset="55%" stop-color="#fff0c2" stop-opacity=".2"/>
+                    <stop offset="100%" stop-color="#fff0c2" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="pcMonitorGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#35d0ff" stop-opacity=".35"/>
+                    <stop offset="100%" stop-color="#35d0ff" stop-opacity="0"/>
+                </radialGradient>
+            </defs>
+            <!-- lampu meja: sumber cahaya kecil di dunia scene (bukan filter CSS),
+                 posisinya sama persis dengan bohlam ellipse di bawah -->
+            <circle cx="694" cy="-12" r="130" fill="url(#deskLampGlow)"/>
+            <!-- pc tower in the cubby -->
+            <rect x="132" y="196" width="96" height="171" rx="6" fill="#26222c" stroke="#111018" stroke-width="5"/>
+            <rect x="146" y="212" width="6" height="120" rx="3" fill="#35d0ff"/>
+            <rect x="160" y="212" width="6" height="120" rx="3" fill="#d3202e"/>
+            <path d="M188 214H214M188 226H214M188 238H214" stroke="#4a4550" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="200" cy="340" r="8" fill="#1d3f96" stroke="#111018" stroke-width="3"/>
+            <ellipse cx="230" cy="367" rx="60" ry="8" fill="#35d0ff" opacity=".18"/>
+            <!-- laptop -->
+            <circle cx="177" cy="16" r="115" fill="url(#pcMonitorGlow)"/>
+            <path d="M92 -32H262V64H92Z" fill="#17141a" stroke="#111018" stroke-width="8"/>
+            <rect x="106" y="-19" width="142" height="70" fill="#1d3f96"/>
+            <path d="M106 51V20Q150 0 248 24V51Z" fill="#c41e2c"/>
+            <g style="color:#fff"><use href="#spy" x="145" y="-14" width="64" height="64"/></g>
+            <path d="M70 64H286L296 84H60Z" fill="#d7d0cb" stroke="#111018" stroke-width="7"/>
+            <!-- mask bust -->
+            <rect x="500" y="62" width="60" height="22" fill="#25212a" stroke="#111018" stroke-width="6"/>
+            <path d="M530 -62Q590 -62 590 6Q590 52 530 66Q470 52 470 6Q470 -62 530 -62Z" fill="#d3202e" stroke="#111018" stroke-width="7"/>
+            <g fill="none" stroke="#111018" stroke-width="3" opacity=".75">
+                <path d="M530 -60V64M530 -6L474 -6M530 -6L588 -6M530 -34L480 -30M530 -34L580 -30M530 24L482 34M530 24L578 34"/>
+            </g>
+            <path d="M492 -2Q510 -16 526 8Q508 18 492 -2Z" fill="#fff" stroke="#111018" stroke-width="5"/>
+            <path d="M568 -2Q550 -16 534 8Q552 18 568 -2Z" fill="#fff" stroke="#111018" stroke-width="5"/>
+            <!-- desk lamp -->
+            <path d="M652 82Q652 66 676 66Q700 66 700 82Z" fill="#25212a" stroke="#111018" stroke-width="5"/>
+            <path d="M676 66L662 4L698 -38" fill="none" stroke="#25212a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M684 -50L720 -36L708 -12L676 -28Z" fill="#c41e2c" stroke="#111018" stroke-width="5"/>
+            <ellipse cx="694" cy="-12" rx="14" ry="6" fill="#fff6d5" opacity=".9"/>
+        </svg>
+
+        <!-- KALENDER DI ATAS MEJA (kloningan dari #scene-calendar, dipasang oleh main.js) -->
+        <div class="desk-calendar cal-skin" id="deskCalendar" aria-hidden="true">
+            <div class="desk-calendar__inner"></div>
+        </div>
+    </div>
+
+    <div class="furniture bed">
+        <img src="assets/svg/bed_spiderman_vector.svg" alt="Kasur kamar">
+        <svg class="overlay" viewBox="0 0 1000 430" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M100 198Q160 168 270 177L700 181Q752 183 752 205L752 298Q560 310 400 298Q240 286 100 300Z" fill="#d3202e" stroke="#16121a" stroke-width="7" stroke-linejoin="round"/>
+            <path d="M100 262Q250 250 400 262Q580 274 752 262L752 298Q560 310 400 298Q240 286 100 300Z" fill="#1d3f96" stroke="#16121a" stroke-width="5" stroke-linejoin="round"/>
+            <g fill="none" stroke="#16121a" stroke-width="3" opacity=".6"><path d="M750 190L112 214"/><path d="M750 190L150 298"/><path d="M750 190L290 300"/><path d="M750 190L430 300"/><path d="M750 190L580 302"/><path d="M750 190L700 302"/><path d="M690 184Q676 240 686 300"/><path d="M590 184Q576 240 586 300"/><path d="M490 184Q476 240 486 300"/><path d="M390 184Q376 240 386 300"/><path d="M290 184Q276 240 286 300"/><path d="M190 184Q176 240 186 300"/></g>
+            <g style="color:#fff"><use href="#spy" x="345" y="184" width="86" height="80"/></g>
+            <g transform="translate(-88 14)"><path d="M720 132Q755 98 823 110L875 145Q891 157 873 176L811 198Q775 206 739 185L706 163Q696 150 720 132Z" fill="#1d3f96" stroke="#16121a" stroke-width="6"/><g style="color:#fff"><use href="#spy" x="760" y="122" width="62" height="62" transform="rotate(-18 795 157)"/></g></g>
+            <path d="M720 132Q755 98 823 110L875 145Q891 157 873 176L811 198Q775 206 739 185L706 163Q696 150 720 132Z" fill="#d3202e" stroke="#16121a" stroke-width="6"/>
+            <g style="color:#16121a"><use href="#spy" x="760" y="122" width="70" height="70" transform="rotate(-18 795 157)"/></g>
+        </svg>
+    </div>
+
+
+    <!-- =================================================
+         AURELL — karakter yang jalan ke meja
+         Sprite PNG dari character sheet (assets/img/aurell/):
+           front = berdiri menghadap depan
+           side  = tampak samping (diam / posisi lewat saat jalan)
+           step  = langkah 1 (dipakai bergantian dengan side saat jalan)
+           back  = tampak belakang (saat sudah di meja)
+         Pose diatur lewat class di js/room.js: pose-front / pose-side / pose-back, is-walking
+    ================================================= -->
+    <div class="aurell pose-front" id="aurell" aria-hidden="true">
+        <span class="a-shadow"></span>
+        <div class="a-sprite">
+            <img class="a-frame a-front" src="assets/img/aurell/front.png" alt="">
+            <img class="a-frame a-side"  src="assets/img/aurell/side.png"  alt="">
+            <img class="a-frame a-step"  src="assets/img/aurell/step.png"  alt="">
+            <img class="a-frame a-back"  src="assets/img/aurell/back.png"  alt="">
+        </div>
+    </div>
+
+    <!-- FINAL OVERLAYS -->
+    <div class="vignette"></div>
+
+</div>
+
+    <div class="cine-bar top"></div>
+    <div class="cine-bar bottom"></div>
+
+</section>
+
+
+<!-- =====================================================
+     SCENE 3 — KALENDER (fokus)
+===================================================== -->
+
+<section class="scene cal-skin" id="scene-calendar" aria-hidden="true">
+
+    <div class="viewport">
+        <div class="calendar-fit" id="calendarFit">
+        <div class="camera-rig" id="cameraRig">
+            <div class="calendar-stand">
+
+                <div class="pages-wrapper">
+                    
+                    <!-- LEMBARAN OKTOBER 2026 (Bawah) -->
+                    <div class="page page-oktober">
+                        <div class="header-punk">
+                            <div class="header-badge">
+                                <div class="month-name">OCTOBER</div>
+                            </div>
+                        </div>
+                        <table class="calendar-table">
+                            <thead>
+                                <tr>
+                                    <th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="empty"></td>
+                                    <td class="empty"></td>
+                                    <td class="empty"></td>
+                                    <td class="empty"></td>
+                                    <td id="targetDate1">
+                                        1
+                                        <div class="circle-container">
+                                            <svg viewBox="0 0 100 60">
+                                                <!-- Path Sketsa Merah Berlapis Sesuai Contoh Gambar -->
+                                                <path class="red-sketch-path" id="redSketchPath" 
+                                                      d="M 22,28 
+                                                         C 18,12 82,8 86,28 
+                                                         C 90,48 12,48 15,26 
+                                                         C 18,8 88,14 84,32 
+                                                         C 80,48 25,44 20,30" />
+                                            </svg>
+                                        </div>
+                                    </td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+                                </tr>
+                                <tr>
+                                    <td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td>
+                                </tr>
+                                <tr>
+                                    <td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td>
+                                </tr>
+                                <tr>
+                                    <td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- LEMBARAN SEPTEMBER 2026 (Atas) -->
+                    <div class="page page-september" id="septemberPage">
+                        <div class="header-punk">
+                            <div class="header-badge">
+                                <div class="month-name">SEPTEMBER</div>
+                            </div>
+                        </div>
+                        <table class="calendar-table">
+                            <thead>
+                                <tr>
+                                    <th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="empty"></td>
+                                    <td class="empty"></td>
+                                    <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td>
+                                </tr>
+                                <tr>
+                                    <td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td>
+                                </tr>
+                                <tr>
+                                    <td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td>
+                                </tr>
+                                <tr>
+                                    <td>27</td><td>28</td><td>29</td><td>30</td>
+                                    <td class="empty"></td>
+                                    <td class="empty"></td>
+                                    <td class="empty"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <!-- Teks Komik "WOSHHH!" -->
+                <div class="woosh-text" id="wooshText">WOSHHH!</div>
+
+                <!-- Efek Hembusan Angin Bergerak -->
+                <div class="wind-overlay" id="windOverlay">
+                    <div class="wind-line" style="width: 250px; top: 15%; animation-delay: 0s;"></div>
+                    <div class="wind-line" style="width: 380px; top: 35%; height: 8px; animation-delay: 0.2s;"></div>
+                    <div class="wind-line" style="width: 290px; top: 55%; animation-delay: 0.1s;"></div>
+                    <div class="wind-line" style="width: 340px; top: 75%; height: 7px; animation-delay: 0.3s;"></div>
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SCENE 1 — MAIN MENU + kartu cutscene pembuka
+===================================================== -->
+
+<section class="scene" id="scene-menu">
+
+<!-- =====================================================
+     MAIN POSTER
+===================================================== -->
+
+<main class="poster">
+
+
+    <!-- TOP -->
+
+    <header class="top">
+
+        <div class="top-left">
+
+            <span class="top-mark"></span>
+
+            <span>
+                A SMALL STORY
+            </span>
+
+        </div>
+
+        <span class="top-right">
+            BND—010
+        </span>
+
+    </header>
+
+
+    <!-- GIANT BACKGROUND -->
+
+    <div class="issue">
+        01
+    </div>
+
+
+    <!-- CROSS -->
+
+    <div class="cross one"></div>
+    <div class="cross two"></div>
+
+
+    <!-- WEB -->
+
+    <div class="web">
+
+        <svg
+            viewBox="0 0 200 200"
+            fill="none"
+        >
+
+            <g
+                stroke="#a51d2d"
+                stroke-width=".8"
+            >
+
+                <circle cx="100" cy="100" r="22"/>
+                <circle cx="100" cy="100" r="43"/>
+                <circle cx="100" cy="100" r="64"/>
+                <circle cx="100" cy="100" r="85"/>
+
+                <line
+                    x1="100"
+                    y1="15"
+                    x2="100"
+                    y2="185"
+                />
+
+                <line
+                    x1="15"
+                    y1="100"
+                    x2="185"
+                    y2="100"
+                />
+
+                <line
+                    x1="40"
+                    y1="40"
+                    x2="160"
+                    y2="160"
+                />
+
+                <line
+                    x1="160"
+                    y1="40"
+                    x2="40"
+                    y2="160"
+                />
+
+                <line
+                    x1="56"
+                    y1="22"
+                    x2="144"
+                    y2="178"
+                />
+
+                <line
+                    x1="144"
+                    y1="22"
+                    x2="56"
+                    y2="178"
+                />
+
+            </g>
+
+        </svg>
+
+    </div>
+
+    <!-- CENTRAL COMIC FIGURE / COVER FOCAL POINT -->
+    <div class="menu-spider" aria-hidden="true">
+        <svg viewBox="0 0 100 100">
+            <use href="#spy"/>
+        </svg>
+    </div>
+
+    <div class="menu-caption" aria-hidden="true">
+        <span>ISSUE 01</span>
+        <b>ONE SMALL STORY</b>
+    </div>
+
+
+    <!-- =================================================
+         TITLE
+    ================================================= -->
+
+    <section class="title">
+
+        <div class="title-meta">
+            CENTRAL JAVA / 01
+        </div>
+
+        <h1>
+
+            <small>
+                SPIDER-MAN
+            </small>
+
+            BRAND
+
+            <span class="new">
+                NEW
+            </span>
+
+            <span class="day">
+                DAY
+            </span>
+
+        </h1>
+
+    </section>
+
+
+    <!-- SIDE COPY -->
+
+    <div class="side-text">
+        no signal / no rush / just tonight
+    </div>
+
+
+    <!-- =================================================
+         LOCATION
+    ================================================= -->
+
+    <section class="location">
+
+        <div class="location-label">
+            SOMEWHERE IN
+        </div>
+
+        <div class="location-name">
+            CENTRAL<br>
+            <span>JAVA.</span>
+        </div>
+
+    </section>
+
+
+    <!-- CHAPTER -->
+
+    <div class="chapter"></div>
+    <div class="dot d1" aria-hidden="true"></div>
+    <div class="dot d2" aria-hidden="true"></div>
+
+
+    <!-- =================================================
+         LOWER COPY
+    ================================================= -->
+
+    <section class="lower">
+
+        <p>
+            ONE QUIET NIGHT.<br>
+            ONE COLD ROOM.<br>
+            ONE MORE STORY.
+        </p>
+
+    </section>
+
+
+    <!-- =================================================
+         START
+    ================================================= -->
+
+    <div class="start">
+
+        <button
+            id="startButton"
+            type="button"
+        >
+            START THE STORY →
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         FOOTER
+    ================================================= -->
+
+    <footer class="footer">
+
+        <span>
+            <strong>SPIDER-MAN</strong>
+            / BRAND NEW DAY
+        </span>
+
+        <span>
+            ORIGINAL GAME / 2026
+        </span>
+
+    </footer>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     CUTSCENE
+===================================================== -->
+
+<section
+    class="story-frame"
+    id="storyFrame"
+>
+
+    <div class="story-content">
+
+        <div class="story-number">
+            01
+        </div>
+
+        <div class="story-line"></div>
+
+        <div class="story-text">
+
+            00:00 AM.
+
+            <span class="gap"></span>
+
+            <span class="muted">
+                Somewhere in Central Java.
+            </span>
+
+            <span class="gap"></span>
+
+            A cold room.
+
+        </div>
+
+        <div class="story-footer">
+            CHAPTER 01 / BEGINNING
+        </div>
+
+    </div>
+
+</section>
+
+</section>
+
+
+<!-- =====================================================
+     SCENE 4 — PENUTUP
+===================================================== -->
+
+<section class="scene" id="scene-end" aria-live="polite">
+
+    <div class="end-burst"></div>
+
+    <div class="end-skyline" aria-hidden="true">
+        <img src="assets/img/skyline-ny.png" alt="">
+    </div>
+
+    <div class="end-web l"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#web-corner"/></svg></div>
+    <div class="end-web r"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#web-corner"/></svg></div>
+
+    <div class="end-spider" aria-hidden="true">
+        <img src="assets/img/spidey-hang.png" alt="" class="end-spider-img">
+        <span class="end-thwip">THWIP!</span>
+    </div>
+
+    <div class="end-stack">
+        <p class="end-wake"></p>
+        <p class="end-name"></p>
+        <p class="end-sub"></p>
+    </div>
+
+    <div class="end-vignette"></div>
+
+        <button class="end-replay" type="button" aria-label="Replay the story">REPLAY ↺</button>
+
+</section>
+
+
+
+<script type="module" src="src/story/entry.js"></script>
+
+</body>
+</html>
